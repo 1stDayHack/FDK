@@ -11,7 +11,7 @@ class BaseClass(object):
     def __init__(self,name):
         
         self.name = name
-
+        
 
     def predict(self):
         raise NotImplementedError("To be implemented in individual module's script")

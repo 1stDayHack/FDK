@@ -11,7 +11,7 @@ import matplotlib.patches as patches
 
 class FaceTracker(BaseClass):
 
-    def __init__(self, model, name='detectron2'):
+    def __init__(self, model, name='BlazeFace'):
         super().__init__(name)
         
         #Init name and metadata
