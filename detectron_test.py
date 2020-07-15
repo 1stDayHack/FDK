@@ -16,7 +16,7 @@ from detectron2.data import MetadataCatalog, DatasetCatalog
 
 
 # img = cv2.imread("/home/keifer/Downloads/answer-me-1994-002.jpg")
-img = cv2.imread("/home/keifer/Downloads/cctv-footage.jpg")
+img = cv2.imread("/home/keifer/Downloads/james-weber-japan-cover.jpg")
 
 cfg = get_cfg()
 cfg.MODEL.DEVICE = 'cpu'

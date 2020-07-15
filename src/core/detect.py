@@ -17,8 +17,8 @@ from detectron2.data import MetadataCatalog, DatasetCatalog
 
 class Detector(BaseClass):
 
-    def __init__(self):
-        super().__init__(name='detectron2',model):
+    def __init__(self, model, name='detectron2'):
+        super().__init__(name)
         
         #Init name and metadata
         self.name = name
@@ -34,7 +34,7 @@ class Detector(BaseClass):
         self.cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.5 
 
         # Find a model from detectron2's model zoo. You can use the https://dl.fbaipublicfiles... url as well
-        self.cfg.MODEL.WEIGHTS = model_zoo.get_checkpoint_url(self.model)
+        self.cfg.MODEL.WEIGHTS = model_zoo.get_checkpoint_url(self.model) #Weight fetching handled by detectron2's utility fx
         self.predictor = DefaultPredictor(self.cfg)
 
 
@@ -44,7 +44,7 @@ class Detector(BaseClass):
         Does inference with all supported mode of inference by Detectron2.
 
         Input:
-            image: cv2.Image type object
+            image: cv2 type object
 
         Output:
             predictions: torch.tensor object
@@ -60,13 +60,13 @@ class Detector(BaseClass):
         Simple single plot visualizing function.
 
         Input:
-            image: cv2.Image type object
+            image: cv2 type object
             outputs: torch.tensor object returned by the predict() function
 
         Output:
             None
         """
-        viz = Visualizer(image[:, :, ::-1], MetadataCatalog.get(cfg.DATASETS.TRAIN[0])), scale=1.2)
+        viz = Visualizer(image[:, :, ::-1], MetadataCatalog.get(cfg.DATASETS.TRAIN[0]), scale=1.2)
         out = v.draw_instance_predictions(outputs["instances"].to("cpu"))
         plt.imshow(out.get_image())
         plt.show()
