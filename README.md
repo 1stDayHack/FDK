@@ -7,3 +7,17 @@ Stupidly easy to use high-level Deep Learning toolkit for solving generic tasks.
 * Complete requirement.txt
 * Complete readme.txt
 * Run tests, demonstrations and benchmarks.
+
+
+**Modules/Libs to Add**:
+- [x] Detectron2
+- [x] BlazeFace
+- [x] DasiamRPN
+- [ ] Gen. Object Classifier
+- [ ] Gen. Object Classifier Lite
+- [ ] Deoldifier
+- [ ] Super-Resolutor
+- [ ] Image Caption Generator
+- [ ] MiDAS
+- [ ] Pytorch-Transformer
+- [ ] Face Generator
