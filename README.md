@@ -1,5 +1,8 @@
 # 1stdaykit
-<img width="600 src="https://github.com/1stDayHack/1stdaykit/blob/master/misc/pic.png">                                                                                        
+<p align="center">
+  <img width="600" src="https://github.com/1stDayHack/1stdaykit/blob/master/misc/pic.png" />
+</p>
+
 Stupidly easy to use high-level Deep Learning toolkit for solving generic tasks.
 
 **To Do**:
