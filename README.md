@@ -1,5 +1,7 @@
 # 1stdaykit
 Stupidly easy to use high-level Deep Learning toolkit for solving generic tasks.
+<br>
+
 <img align="center" width="500" src="https://github.com/1stDayHack/1stdaykit/blob/master/misc/pic.png">
 
 **To Do**:
