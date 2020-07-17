@@ -25,7 +25,7 @@ class ObjectTracker(BaseClass):
         #Create net
         self.predictor = SiamRPNotb().to(self.device)
         self.predictor.load_state_dict(self.weight_path)
-        self.predictor.eval().cuda()
+        self.predictor.eval()
 
         #Init helper
         self.MS = MouseSelector()
