@@ -1,8 +1,8 @@
 # 1stdaykit
-Stupidly easy to use high-level Deep Learning toolkit for solving generic tasks.
-<br>
 
-<img align="center" width="500" src="https://github.com/1stDayHack/1stdaykit/blob/master/misc/pic.png">
+<img align="center" src="https://github.com/1stDayHack/1stdaykit/blob/master/misc/pic.png">
+
+Stupidly easy to use high-level Deep Learning toolkit for solving generic tasks.
 
 **To Do**:
 * List authors and credits for original repos.
