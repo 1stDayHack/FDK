@@ -1,5 +1,6 @@
 # 1stdaykit
-![doodle](misc/pic.png){:width="300px"}
+<img src="https://github.com/1stDayHack/1stdaykit/blob/master/misc/pic.png" width="400">
+
 Stupidly easy to use high-level Deep Learning toolkit for solving generic tasks.
 
 **To Do**:
