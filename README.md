@@ -1,5 +1,5 @@
 # 1stdaykit
-![doodle](misc/pic.png | width = 300)
+![doodle](misc/pic.png | width=300)
 Stupidly easy to use high-level Deep Learning toolkit for solving generic tasks.
 
 **To Do**:
