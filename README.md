@@ -12,6 +12,7 @@
 * Complete requirement.txt
 * Complete readme.txt
 * Run tests, demonstrations and benchmarks.
+* Include demo-video; e.g. super-res demo. 
 
 
 **Modules/Libs to Add**:
@@ -20,8 +21,8 @@
 - [x] DasiamRPN
 - [x] Gen. Object Classifier
 - [x] Gen. Object Classifier Lite
+- [X] Super-Resolutor
 - [ ] Deoldifier
-- [ ] Super-Resolutor
 - [ ] Image Caption Generator
 - [ ] MiDAS
 - [ ] Pytorch-Transformer
