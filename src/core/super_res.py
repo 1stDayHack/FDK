@@ -1,16 +1,18 @@
 ### Import modules
-import cv2
+import cv2,PIL
 import numpy as np
 import torch
 import matplotlib.pyplot as plt
+import torchvision.transforms as transforms
 
-from base_libs.ESRGAN import RRDBNet_arch as arch
-from base import BaseClass
+from .utils import utils
+from .base_libs.ESRGAN import RRDBNet_arch as arch
+from .base import BaseClass
 
 
 class SuperReser(BaseClass):
 
-    def __init__(self, model, name='Super Resolution ESRGAN'):
+    def __init__(self, name='Super Resolution ESRGAN'):
         super().__init__(name)
         
         #Init name and metadata
@@ -18,16 +20,10 @@ class SuperReser(BaseClass):
         self.device = 'gpu' if torch.cuda.is_available() else 'cpu'
 
         #Create net
-        self.weight = 'baselibs/ESRGAN/models/RRDB_ESRGAN_x4.pth' 
+        self.weight = 'src/core/base_libs/ESRGAN/models/RRDB_ESRGAN_x4.pth' 
         self.predictor = arch.RRDBNet(3, 3, 64, 23, gc=32)
         self.predictor.load_state_dict(torch.load(self.weight), strict=True)
         self.predictor.to(self.device).eval()
-
-
-        #Init helper
-        self.transform = transforms.Compose([transforms.ToTensor(),
-                                             transforms.Normalize([0,0,0],
-                                                                  [255,255,255])])
 
 
     def predict(self,image):
@@ -43,28 +39,28 @@ class SuperReser(BaseClass):
             predictions: torch.tensor object
         """
 
-        #Cast cv2 image to PIL format if needed
-        if type(image) != PIL.Image:
-            cv2_im = cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
-            image = PIL.Image.fromarray(cv2_im)
+        #Cast PIL image to cv2 format if needed
+        # if type(image) != np.ndarray:
+        #     image = utils.pil_to_cv2(image)
 
         #Transform / preprocess as required by trained model
-        images_tf = self.transform(image).float().unsqueeze(0) #make batch dimension
-        
-        #Predict / Inference
-        output = self.predictor(images_tf).data.squeeze(0).float().cpu().clamp_(0,1).numpy() #remove batch dimension
+        image = image * 1 / 255
+        image = torch.from_numpy(np.transpose(image[:, :, [2, 1, 0]], (2, 0, 1))).float()
+        image = image.unsqueeze(0) #make batch dimension
 
-        #Post process according to model's construction
-        output = np.transpose(output[[2, 1, 0], :, :], (1, 2, 0))
-        output = (output * 255.0).round()
+        with torch.no_grad():
+            output = self.predictor(image).data.squeeze().float().cpu().clamp_(0, 1).numpy()
+            output = np.transpose(output[[2, 1, 0], :, :], (1, 2, 0))
+            output = (output * 255).round()
+
 
         return output
         
 
 
-    def visualize(self,image,output):
+    def visualize(self,original,output,figsize=(10,10)):
         """
-        Simple single plot visualizing function.
+        Simple visualizing function for pair of images.
 
         Input:
             image: cv2 type object
@@ -76,13 +72,22 @@ class SuperReser(BaseClass):
 
         #Check
         assert len(output.shape) <= 3, "Error! The visualize() function only accept individual image only, NOT batches."
-
-        #Cast cv2 image to PIL format if needed
-        if type(image) != PIL.Image:
-            cv2_im = cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
-            image = PIL.Image.fromarray(cv2_im)
-
+        
         #Plot image
-        plt.imshow(image)
+        fig,ax = plt.subplots(2,figsize = figsize)
+
+        ax[0].imshow(original[:,:,::-1], interpolation='none')
+        ax[0].set_title('Original Image')   
+
+        ax[1].imshow(output[:,:,::-1]/255, interpolation='none')
+        ax[1].set_title('Super Resolution Result')   
+
         plt.show()
-     
+
+
+    def save_image(self,image,output_path,file_name="my_pic",file_fmt="jpg"):
+        """
+        Helper function to save image to disk as jpg file.
+        """
+        name = output_path + "/" + file_name + "." + file_fmt
+        return cv2.imwrite(name, image)

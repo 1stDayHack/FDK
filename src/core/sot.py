@@ -1,9 +1,9 @@
 ### Import modules
-from base import BaseClass
-from base_libs.DaSiamRPN.dasiamrpn.net import SiamRPNotb
-from base_libs.DaSiamRPN.dasiamrpn.run_SiamRPN import SiamRPN_init, SiamRPN_track
-from base_libs.DaSiamRPN.dasiamrpn.utils import rect_2_cxy_wh, cxy_wh_2_rect
-from utils.mouse import MouseSelector
+from .base import BaseClass
+from .base_libs.DaSiamRPN.dasiamrpn.net import SiamRPNotb
+from .base_libs.DaSiamRPN.dasiamrpn.run_SiamRPN import SiamRPN_init, SiamRPN_track
+from .base_libs.DaSiamRPN.dasiamrpn.utils import rect_2_cxy_wh, cxy_wh_2_rect
+from .utils.utils import MouseSelector
 
 import numpy as np
 import os, json, cv2, torch

@@ -1,6 +1,6 @@
 ### Import modules
 from base import BaseClass
-from utils.mouse import MouseSelector
+from utils import utils
 from utils.variables import imagenet_map,imagenet_stats
 
 import torchvision.transforms as transforms
@@ -44,9 +44,8 @@ class Classifier(BaseClass):
         """
 
         #Cast cv2 image to PIL format if needed
-        if type(image) != PIL.Image:
-            cv2_im = cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
-            image = PIL.Image.fromarray(cv2_im)
+        if type(image) != PIL.Image.Image:
+            image = utils.cv2_to_pil(image)
 
         #Transform / preprocess as required by trained model
         images_tf = self.transform(image).unsqueeze(0) #make batch dimension
@@ -74,9 +73,8 @@ class Classifier(BaseClass):
         assert len(output.shape) <= 3, "Error! The visualize() function only accept individual image only, NOT batches."
 
         #Cast cv2 image to PIL format if needed
-        if type(image) != PIL.Image:
-            cv2_im = cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
-            image = PIL.Image.fromarray(cv2_im)
+        if type(image) != PIL.Image.Image:
+            image = utils.cv2_to_pil(image)
 
         #Plot image
         plt.imshow(image)

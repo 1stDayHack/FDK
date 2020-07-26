@@ -1,6 +1,6 @@
 ### Import modules
 import detectron2
-from base import BaseClass
+from .base import BaseClass
 from detectron2.utils.logger import setup_logger
 
 import numpy as np
@@ -17,12 +17,12 @@ from detectron2.data import MetadataCatalog, DatasetCatalog
 
 class Detector(BaseClass):
 
-    def __init__(self, model, name='detectron2'):
+    def __init__(self, model="COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml", name="detectron2"):
         super().__init__(name)
         
         #Init name and metadata
         self.name = name
-        self.model = "COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml" #checkout model_zoo for all configs
+        self.model = model #checkout model_zoo for all configs
         self.device = 'gpu' if torch.cuda.is_available() else 'cpu'
 
         #Init config file
@@ -55,7 +55,7 @@ class Detector(BaseClass):
         
 
 
-    def visualize(self,image,outputs):
+    def visualize(self,image,outputs,figsize=(10,10),noplot=False):
         """
         Simple single plot visualizing function.
 
@@ -66,12 +66,24 @@ class Detector(BaseClass):
         Output:
             None
         """
-        viz = Visualizer(image[:, :, ::-1], MetadataCatalog.get(cfg.DATASETS.TRAIN[0]), scale=1.2)
-        out = v.draw_instance_predictions(outputs["instances"].to("cpu"))
-        plt.imshow(out.get_image())
-        plt.show()
+        viz = Visualizer(image[:, :, ::-1], MetadataCatalog.get(self.cfg.DATASETS.TRAIN[0]), scale=1.2)
+        out = viz.draw_instance_predictions(outputs["instances"].to("cpu"))
+        #plt.imshow(out.get_image())
+        #plt.show()
 
-        return None
+        if not noplot:
+            fig = plt.figure(figsize = figsize)
+            ax1 = fig.add_subplot(111)
+            ax1.imshow(out.get_image(), interpolation='none')
+            ax1.set_title('Detection Result')
 
 
-     
+        return out.get_image()
+
+
+    def save_image(self,image,output_path,file_name="my_pic",file_fmt="jpg"):
+        """
+        Helper function to save image to disk as jpg file.
+        """
+        name = output_path + "/" + file_name + "." + file_fmt
+        return cv2.imwrite(name, image)

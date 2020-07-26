@@ -9,7 +9,7 @@ model_path = 'models/RRDB_ESRGAN_x4.pth'  # models/RRDB_ESRGAN_x4.pth OR models/
 #device = torch.device('cuda')  # if you want to run on CPU, change 'cuda' -> cpu
 device = torch.device('cpu')
 
-test_img_folder = 'LR/*'
+test_img_folder = 'ny/*'
 
 model = arch.RRDBNet(3, 3, 64, 23, gc=32)
 model.load_state_dict(torch.load(model_path), strict=True)
@@ -34,4 +34,4 @@ for path in glob.glob(test_img_folder):
         output = model(img_LR).data.squeeze().float().cpu().clamp_(0, 1).numpy()
     output = np.transpose(output[[2, 1, 0], :, :], (1, 2, 0))
     output = (output * 255.0).round()
-    cv2.imwrite('results/{:s}_rlt.png'.format(base), output)
+    cv2.imwrite('ny_results/{:s}_rlt.png'.format(base), output)

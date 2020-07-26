@@ -71,10 +71,10 @@ class BlazeFace(nn.Module):
         self.num_anchors = 896
         self.num_coords = 16
         self.score_clipping_thresh = 100.0
-        self.x_scale = 128.0
-        self.y_scale = 128.0
-        self.h_scale = 128.0
-        self.w_scale = 128.0
+        self.x_scale = 540.0
+        self.y_scale = 540.0
+        self.h_scale = 540.0
+        self.w_scale = 540.0
         self.min_score_thresh = 0.75
         self.min_suppression_threshold = 0.3
 
@@ -200,9 +200,9 @@ class BlazeFace(nn.Module):
         if isinstance(x, np.ndarray):
             x = torch.from_numpy(x).permute((0, 3, 1, 2))
 
-        assert x.shape[1] == 3
-        assert x.shape[2] == 128
-        assert x.shape[3] == 128
+        # assert x.shape[1] == 3
+        # assert x.shape[2] == 128
+        # assert x.shape[3] == 128
 
         # 1. Preprocess the images into tensors:
         x = x.to(self._device())

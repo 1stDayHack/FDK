@@ -1,6 +1,6 @@
 ### Import modules
-from base import BaseClass
-from base_libs.BlazeFace.blazeface import BlazeFace
+from .base import BaseClass
+from .base_libs.BlazeFace.blazeface import BlazeFace
 
 import numpy as np
 import os, json, cv2, torch
@@ -11,14 +11,14 @@ import matplotlib.patches as patches
 
 class FaceTracker(BaseClass):
 
-    def __init__(self, model, name='BlazeFace'):
+    def __init__(self, name='BlazeFace'):
         super().__init__(name)
         
         #Init name and metadata
         self.name = name
         self.device = 'gpu' if torch.cuda.is_available() else 'cpu'
-        self.weight_path = 'blazeface.pth' #replace me
-        self.anchor_path = 'anchors.npy' #replace me
+        self.weight_path = 'src/core/base_libs/BlazeFace/blazeface.pth' #replace me
+        self.anchor_path = 'src/core/base_libs/BlazeFace/anchors.npy' #replace me
 
         #Create net
         self.predictor = BlazeFace().to(self.device)
