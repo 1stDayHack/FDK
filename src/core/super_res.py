@@ -46,7 +46,7 @@ class SuperReser(BaseClass):
         #Transform / preprocess as required by trained model
         image = image * 1 / 255
         image = torch.from_numpy(np.transpose(image[:, :, [2, 1, 0]], (2, 0, 1))).float()
-        image = image.unsqueeze(0) #make batch dimension
+        image = image.unsqueeze(0).to(self.device) #make batch dimension
 
         with torch.no_grad():
             output = self.predictor(image).data.squeeze().float().cpu().clamp_(0, 1).numpy()

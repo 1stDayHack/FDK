@@ -71,10 +71,10 @@ class BlazeFace(nn.Module):
         self.num_anchors = 896
         self.num_coords = 16
         self.score_clipping_thresh = 100.0
-        self.x_scale = 540.0
-        self.y_scale = 540.0
-        self.h_scale = 540.0
-        self.w_scale = 540.0
+        self.x_scale = 128.0
+        self.y_scale = 128.0
+        self.h_scale = 128.0
+        self.w_scale = 128.0
         self.min_score_thresh = 0.75
         self.min_suppression_threshold = 0.3
 

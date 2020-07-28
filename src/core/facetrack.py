@@ -11,6 +11,7 @@ import matplotlib.patches as patches
 
 class FaceTracker(BaseClass):
 
+
     def __init__(self, name='BlazeFace'):
         super().__init__(name)
         
@@ -25,10 +26,12 @@ class FaceTracker(BaseClass):
         self.predictor.load_weights(self.weight_path)
         self.predictor.load_anchors(self.anchor_path)
 
-        # Optionally change the thresholds:
+        #Optionally change the thresholds:
         self.predictor.min_score_thresh = 0.75
         self.predictor.min_suppression_threshold = 0.3
 
+        #Temp message
+        print("Works only on image size of 128x128. For larger images, perform rescaling input and output.")
 
 
     def predict(self,image):
@@ -41,7 +44,7 @@ class FaceTracker(BaseClass):
         Output:
             predictions: torch.tensor object
         """
-        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB) #Cast as right format
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB).to(self.device) #Cast as right format
         outputs = self.predictor.predict_on_image(image)
         
         return outputs

@@ -48,7 +48,7 @@ class Classifier(BaseClass):
             image = utils.cv2_to_pil(image)
 
         #Transform / preprocess as required by trained model
-        images_tf = self.transform(image).unsqueeze(0) #make batch dimension
+        images_tf = self.transform(image).unsqueeze(0).to(self.device) #make batch dimension
         
         #Predict / Inference
         output = self.predictor(images_tf).squeeze(0) #remove batch dimension

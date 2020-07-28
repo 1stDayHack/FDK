@@ -49,7 +49,7 @@ class Detector(BaseClass):
         Output:
             predictions: torch.tensor object
         """
-        outputs = self.predictor(image)
+        outputs = self.predictor(image.to(self.device))
         
         return outputs
         

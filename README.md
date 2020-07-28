@@ -22,8 +22,8 @@
 - [x] Gen. Object Classifier
 - [x] Gen. Object Classifier Lite
 - [X] Super-Resolutor
+- [X] MiDAS
 - [ ] Deoldifier
 - [ ] Image Caption Generator
-- [ ] MiDAS
 - [ ] Pytorch-Transformer
 - [ ] Face Generator

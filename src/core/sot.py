@@ -63,7 +63,7 @@ class ObjectTracker(BaseClass):
             predictions: torch.tensor object
         """
 
-        self.state = SiamRPN_track(self.state,image)
+        self.state = SiamRPN_track(self.state,image.to(self.device))
         self.location = cxy_wh_2_rect(state['target_pos']+1, state['target_sz'])
 
         return self.location
