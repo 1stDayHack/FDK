@@ -13,6 +13,8 @@
 * Complete readme.txt
 * Run tests, demonstrations and benchmarks.
 * Include demo-video; e.g. super-res demo. 
+* Add GPU / CPU option FLAGs for all model for option to toggle between manually.
+* For Pytorch-Transformer models, give options to change model type (Light or Heavy) and list in docstring. (Simplicity first)
 
 
 **Modules/Libs to Add**:
@@ -25,5 +27,8 @@
 - [X] MiDAS
 - [ ] Deoldifier
 - [ ] Image Caption Generator
-- [ ] Pytorch-Transformer
-- [ ] Face Generator
+- [ ] PyTrans - Text Summarization 
+- [ ] PyTrans - Text Translation
+- [ ] PyTrans - Text Q&A
+- [ ] PyTrans - Text Generation
+- [ ] PyTrans - Text Sentiment Analysis
