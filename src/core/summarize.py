@@ -9,20 +9,19 @@ from .utils import utils
 from .base import BaseClass
 
 
-class Translator(BaseClass):
+class Summarizer(BaseClass):
 
-    def __init__(self, name='T5 Translator',task='translation_en_to_de'):
+    def __init__(self, name='BART Summarizer'):
         super().__init__(name)
         
         #Init name and metadata
         self.name = name
-        self.task = task
         self.device = 1 if torch.cuda.is_available() else -1
 
         #Create net
-        self.tokenizer = AutoTokenizer.from_pretrained("t5-base")
-        self.model = AutoModelWithLMHead.from_pretrained("t5-base")
-        self.predictor = pipeline(self.task, 
+        self.tokenizer = AutoTokenizer.from_pretrained("facebook/bart-large-cnn")
+        self.model = AutoModelWithLMHead.from_pretrained("facebook/bart-large-cnn")
+        self.predictor = pipeline('summarization', 
                                   model = self.model,
                                   tokenizer = self.tokenizer
                                   device = self.device)
@@ -36,10 +35,10 @@ class Translator(BaseClass):
         try to modify this predict() function to perform batch-inferencing.
 
         Input:
-            image: str object. Text to be translated.
+            image: str object. Seed text to be used for generation.
 
         Output:
-            predictions: list object. Translated text.
+            predictions: list object. Generated text.
         """
 
 

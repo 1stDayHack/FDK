@@ -15,20 +15,21 @@
 * Include demo-video; e.g. super-res demo. 
 * Add GPU / CPU option FLAGs for all model for option to toggle between manually.
 * For Pytorch-Transformer models, give options to change model type (Light or Heavy) and list in docstring. (Simplicity first)
+* Add light-weight 1stDayKit that has minimal dependencies requirement; e.g. no detectron2.
 
 
 **Modules/Libs to Add**:
-- [x] Detectron2
-- [x] BlazeFace
-- [x] DasiamRPN
-- [x] Gen. Object Classifier
-- [x] Gen. Object Classifier Lite
+- [X] Detectron2
+- [X] BlazeFace
+- [X] DasiamRPN
+- [X] Gen. Object Classifier
+- [X] Gen. Object Classifier Lite
 - [X] Super-Resolutor
 - [X] MiDAS
+- [X] PyTrans - Text Summarization 
+- [X] PyTrans - Text Translation
+- [X] PyTrans - Text Q&A
+- [X] PyTrans - Text Generation Lite, Normal, Large, XL
+- [X] PyTrans - Text Sentiment Analysis
 - [ ] Deoldifier
 - [ ] Image Caption Generator
-- [ ] PyTrans - Text Summarization 
-- [ ] PyTrans - Text Translation
-- [ ] PyTrans - Text Q&A
-- [ ] PyTrans - Text Generation
-- [ ] PyTrans - Text Sentiment Analysis
