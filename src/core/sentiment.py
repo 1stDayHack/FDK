@@ -11,7 +11,7 @@ from .base import BaseClass
 
 class SentimentAnalyzer(BaseClass):
 
-    def __init__(self, name='GPT-2 Sentiment Analyzer'):
+    def __init__(self, name='GPT-2 Sentiment Analyzer'): #alt: distilbert-base-uncased-finetuned-sst-2-english 
         super().__init__(name)
         
         #Init name and metadata

@@ -6,6 +6,7 @@
 ***Stupidly easy to use high-level Deep Learning toolkit for solving generic tasks.***
 
 **To Do**:
+* Add path-specification as init-argument.
 * List authors and credits for original repos.
 * Write docstrings.
 * Clean up and shrink down base_libs dependencies.
@@ -15,6 +16,7 @@
 * Include demo-video; e.g. super-res demo. 
 * Add GPU / CPU option FLAGs for all model for option to toggle between manually.
 * For Pytorch-Transformer models, give options to change model type (Light or Heavy) and list in docstring. (Simplicity first)
+* For Pytorch-Transfomer Translation model, include options for option language pairs.
 * Add light-weight 1stDayKit that has minimal dependencies requirement; e.g. no detectron2.
 
 
@@ -31,5 +33,5 @@
 - [X] PyTrans - Text Q&A
 - [X] PyTrans - Text Generation Lite, Normal, Large, XL
 - [X] PyTrans - Text Sentiment Analysis
-- [X] Deoldifier (Archived)
-- [X] Image Caption Generator
+- [X] Deoldifier
+- [ ] Image Caption Generator

@@ -129,3 +129,12 @@ dmypy.json
 .pyre/
 
 src/.vscode/
+
+.pth
+.tar
+.json
+src/core/base_libs/ImageCaptioner/weights/WORDMAP_coco_5_cap_per_img_5_min_word_freq.json
+
+*.pth
+
+*.tar

@@ -1,9 +1,9 @@
 #to do
-transfomers
+transformers
 pytorch
 torchvision
 detectron2
-cv2
 matplotlib
 numpy
-fastai
+scikit-image
+opencv-python
