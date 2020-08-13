@@ -33,5 +33,5 @@
 - [X] PyTrans - Text Q&A
 - [X] PyTrans - Text Generation Lite, Normal, Large, XL
 - [X] PyTrans - Text Sentiment Analysis
-- [X] Deoldifier
-- [ ] Image Caption Generator
+- [X] Image Caption Generator
+- [X] Deoldifier (Shelved)
