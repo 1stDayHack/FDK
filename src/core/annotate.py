@@ -99,8 +99,8 @@ class ImageAnnotater(BaseClass):
         """
 
         #Visualize 
-        seq,alphas = output
-        visualize_att(image, seq, alphas, True)
+        words,alphas = output
+        visualize_att(image, words, alphas, True)
 
 
 

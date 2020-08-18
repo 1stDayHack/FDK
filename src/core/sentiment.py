@@ -11,7 +11,7 @@ from .base import BaseClass
 
 class SentimentAnalyzer(BaseClass):
 
-    def __init__(self, name='GPT-2 Sentiment Analyzer'): #alt: distilbert-base-uncased-finetuned-sst-2-english 
+    def __init__(self, name='Sentiment Analyzer'): #alt: distilbert-base-uncased-finetuned-sst-2-english 
         super().__init__(name)
         
         #Init name and metadata
@@ -19,11 +19,11 @@ class SentimentAnalyzer(BaseClass):
         self.device = 1 if torch.cuda.is_available() else -1
 
         #Create net
-        self.tokenizer = AutoTokenizer.from_pretrained("gpt2")
-        self.model = AutoModelWithLMHead.from_pretrained("gpt2")
+        # self.tokenizer = AutoTokenizer.from_pretrained("gpt2")
+        # self.model = AutoModelWithLMHead.from_pretrained("gpt2")
         self.predictor = pipeline('sentiment-analysis', 
-                                  model = self.model,
-                                  tokenizer = self.tokenizer
+                                #   model = self.model,
+                                #   tokenizer = self.tokenizer,
                                   device = self.device)
 
 
@@ -50,7 +50,7 @@ class SentimentAnalyzer(BaseClass):
         
 
 
-    def visualize(self,text):
+    def visualize(self,raw,output):
         """
         Simple function to call pretty-print for a neater text representation.
 
@@ -62,5 +62,8 @@ class SentimentAnalyzer(BaseClass):
         """
 
         #Print!
-        pprint(text)
+        for idx,i in enumerate(raw):
+            pprint({"Raw Text":i,
+                    "Sentiment":output[idx]['label'],
+                    "Confidence":output[idx]['score']})
 

@@ -18,12 +18,10 @@ class QuesAns(BaseClass):
         self.name = name
         self.device = 1 if torch.cuda.is_available() else -1
 
-        #Create net
-        self.tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased-distilled-squad")
-        self.model = AutoModelWithLMHead.from_pretrained("distilbert-base-uncased-distilled-squad")
-        self.predictor = pipeline('question-answering', 
-                                  model = self.model,
-                                  tokenizer = self.tokenizer
+        #Create net. Commented out; seems like default works, other models/tokenizer will have errors.
+        # self.tokenizer = AutoTokenizer.from_pretrained("bert-large-uncased-whole-word-masking-finetuned-squad")
+        # self.model = AutoModelWithLMHead.from_pretrained("bert-large-uncased-whole-word-masking-finetuned-squad")
+        self.predictor = pipeline('question-answering',
                                   device = self.device)
 
 
@@ -43,7 +41,8 @@ class QuesAns(BaseClass):
 
 
         #Infer
-        output = self.predictor(text)
+        output = self.predictor(question=text['question'],
+                                context=text['context'])
 
         return output
 

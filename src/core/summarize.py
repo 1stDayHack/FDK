@@ -11,20 +11,22 @@ from .base import BaseClass
 
 class Summarizer(BaseClass):
 
-    def __init__(self, name='BART Summarizer'):
+    def __init__(self, name='BART Summarizer',max_length=130,min_length=30):
         super().__init__(name)
         
         #Init name and metadata
         self.name = name
         self.device = 1 if torch.cuda.is_available() else -1
+        self.max_length = max_length
+        self.min_length = min_length
 
         #Create net
         self.tokenizer = AutoTokenizer.from_pretrained("facebook/bart-large-cnn")
         self.model = AutoModelWithLMHead.from_pretrained("facebook/bart-large-cnn")
         self.predictor = pipeline('summarization', 
-                                  model = self.model,
-                                  tokenizer = self.tokenizer
-                                  device = self.device)
+                                 model = self.model,
+                                 tokenizer = self.tokenizer,
+                                 device = self.device)
 
 
 
@@ -43,14 +45,14 @@ class Summarizer(BaseClass):
 
 
         #Infer
-        output = self.predictor(text)
+        output = self.predictor(text,max_length=self.max_length,min_length=self.min_length)
 
         return output
 
         
 
 
-    def visualize(self,text):
+    def visualize(self,raw,output):
         """
         Simple function to call pretty-print for a neater text representation.
 
@@ -62,5 +64,6 @@ class Summarizer(BaseClass):
         """
 
         #Print!
-        pprint(text)
+        pprint({"Raw":raw,
+                "Summarized":output[0]['summary_text']})
 

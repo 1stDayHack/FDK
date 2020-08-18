@@ -9,24 +9,14 @@ from .utils import utils
 from .base import BaseClass
 
 
-class TextGen(BaseClass):
+class _TextGen(BaseClass):
 
-    def __init__(self, name='GPT-2 TextGen',max_length=12):
+    def __init__(self, name='GPT-2 TextGen Base Class'):
         super().__init__(name)
         
         #Init name and metadata
         self.name = name
-        self.max_length = max_length
         self.device = 1 if torch.cuda.is_available() else -1
-
-        #Create net
-        self.tokenizer = AutoTokenizer.from_pretrained("gpt2")
-        self.model = AutoModelWithLMHead.from_pretrained("gpt2")
-        self.predictor = pipeline('text-generation', 
-                                  model = self.model,
-                                  tokenizer = self.tokenizer
-                                  device = self.device,
-                                  max_length = self.max_length)
 
 
 
@@ -45,7 +35,9 @@ class TextGen(BaseClass):
 
 
         #Infer
-        output = self.predictor(text)
+        output = self.predictor(text,
+                                max_length=self.max_length,
+                                num_return_sequences=self.num_return_sequences)
 
         return output
 
@@ -68,64 +60,84 @@ class TextGen(BaseClass):
 
 
 
-class TextGen_Large(TextGen):
+class TextGen_Base(_TextGen):
 
-    def __init__(self, name='GPT-2 Large TextGen',max_length=12):
+    def __init__(self, name='GPT-2 TextGen',max_length=12,num_return_sequences=3):
+        super().__init__(name)
+        
+        #Init name and metadata
+        self.name = name
+        self.max_length = max_length
+        self.num_return_sequences=num_return_sequences
+
+        #Create net
+        self.tokenizer = AutoTokenizer.from_pretrained("gpt2")
+        self.model = AutoModelWithLMHead.from_pretrained("gpt2")
+        self.predictor = pipeline('text-generation', 
+                                  model = self.model,
+                                  tokenizer = self.tokenizer,
+                                  device = self.device)
+
+
+
+class TextGen_Large(_TextGen):
+
+    def __init__(self, name='GPT-2 Large TextGen',max_length=12,num_return_sequences=3):
         super().__init__(name)
         
         #Init name and metadata
         self.name = name
         self.max_length = max_length
         self.device = 1 if torch.cuda.is_available() else -1
+        self.num_return_sequences=num_return_sequences
+
 
         #Create net
         self.tokenizer = AutoTokenizer.from_pretrained("gpt2-large")
         self.model = AutoModelWithLMHead.from_pretrained("gpt2-large")
-        self.predictor = pipeline(self.lp, 
+        self.predictor = pipeline('text-generation', 
                                   model = self.model,
-                                  tokenizer = self.tokenizer
-                                  device = self.device,
-                                  max_length = self.max_length)
+                                  tokenizer = self.tokenizer,
+                                  device = self.device)
 
 
 
 
-class TextGen_XL(TextGen):
+class TextGen_XL(_TextGen):
 
-    def __init__(self, name='GPT-2 XL TextGen',max_length=12):
+    def __init__(self, name='GPT-2 XL TextGen',max_length=12,num_return_sequences=3):
         super().__init__(name)
         
         #Init name and metadata
         self.name = name
         self.max_length = max_length
-        self.device = 1 if torch.cuda.is_available() else -1
+        self.num_return_sequences=num_return_sequences
+        
 
         #Create net
         self.tokenizer = AutoTokenizer.from_pretrained("gpt2-XL")
         self.model = AutoModelWithLMHead.from_pretrained("gpt2-XL")
-        self.predictor = pipeline(self.lp, 
+        self.predictor = pipeline('text-generation', 
                                   model = self.model,
-                                  tokenizer = self.tokenizer
-                                  device = self.device,
-                                  max_length = self.max_length)
+                                  tokenizer = self.tokenizer,
+                                  device = self.device)
 
 
 
-class TextGen_Lite(TextGen):
+class TextGen_Lite(_TextGen):
 
-    def __init__(self, name='GPT-2 Lite TextGen',max_length=12):
+    def __init__(self, name='GPT-2 Lite TextGen',max_length=12,num_return_sequences=3):
         super().__init__(name)
         
         #Init name and metadata
         self.name = name
         self.max_length = max_length
-        self.device = 1 if torch.cuda.is_available() else -1
+        self.num_return_sequences=num_return_sequences
 
         #Create net
         self.tokenizer = AutoTokenizer.from_pretrained("distilgpt2")
         self.model = AutoModelWithLMHead.from_pretrained("distilgpt2")
-        self.predictor = pipeline(self.lp, 
+        self.predictor = pipeline('text-generation', 
                                   model = self.model,
-                                  tokenizer = self.tokenizer
-                                  device = self.device,
-                                  max_length = self.max_length)
+                                  tokenizer = self.tokenizer,
+                                  device = self.device)
