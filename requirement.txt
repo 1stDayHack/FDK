@@ -1,9 +1,0 @@
-#to do
-transformers
-pytorch
-torchvision
-detectron2
-matplotlib
-numpy
-scikit-image
-opencv-python
