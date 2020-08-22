@@ -15,10 +15,10 @@ If you do not need the above functionalities, then it would be advisable to just
 
 
 ### Installation
-FDK has been structured in such a way FDK-Full is simply FDK-Lite with a few extra modules. Hence, if you would like to install only FDK-Full, just follow through the entirety of the instructions below; for FDK-Lite, you can skip the steps on installing Detectron2 below.
+FDK has been structured in such a way FDK-Full is simply FDK-Lite with a few extra modules. Hence, if you would like to install only FDK-Full, just follow through the entirety of the instructions below; for FDK-Lite, you can skip the steps on installing detectron2 below.
 
 
-#### Easy Installation (Recommended; Anaconda Required)
+#### Easy Installation (Recommended; <a href = 'https://docs.anaconda.com/anaconda/install/'> Anaconda </a> Required)
 ```
 #Installing FDK-Lite
 git clone https://github.com/1stDayHack/1stdaykit.git
