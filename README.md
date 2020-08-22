@@ -14,28 +14,35 @@ Note that FDK comes in 2 flavours, FDK-Full and FDK-Lite. FDK-Lite is the same i
 If you do not need the above functionalities, then it would be advisable to just run with FDK-Lite for the sake of convenience. 
 
 
-## Installation
+### Installation
 FDK has been structured in such a way FDK-Full is simply FDK-Lite with a few extra modules. Hence, if you would like to install only FDK-Full, just follow through the entirety of the instructions below; for FDK-Lite, you can skip the steps on installing Detectron2 below.
 
 
-### Easy Installation (Recommended; Anaconda Required)
+#### Easy Installation (Recommended; Anaconda Required)
 ```
 #Installing FDK-Lite
 git clone https://github.com/1stDayHack/1stdaykit.git
 conda env create -f environment.yaml 
 conda activate fdk
+
+#Upgrading to FDK-Full (with detectron2)
+#Check out instructions at https://github.com/facebookresearch/detectron2
 ```
 
-### Manual Installation
+#### Manual Installation
 This option is for those that do not wish to install Anaconda on their machine. Please make sure that you have the correct version of python and pip installed beforehand, and do take note of the packages that will be installed upon execution of the following commands.
 
 *Warning! Please be sure if you are doing this without any virtualenv like setup (e.g. Conda)!* 
 ```
+#Installing FDK-Lite
 git clone https://github.com/1stDayHack/1stdaykit.git
 pip install -r requirements.txt
+
+#Upgrading to FDK-Full (with detectron2)
+#Check out instructions at https://github.com/facebookresearch/detectron2
 ```
 
-
+## Development Logs and Notes
 
 **To Do**:
 * Add path-specification as init-argument.
