@@ -2,7 +2,7 @@
 ***Stupidly easy to use high-level Deep Learning toolkit for solving generic tasks.***
 
 <p align="center">
-  <img width="800" src="misc/nyc_final_1.gif" />
+  <img width="800" src="misc/readme/nyc_final_1.gif" />
 </p>
 
 
@@ -13,6 +13,7 @@ Note that FDK comes in 2 flavours, FDK-Full and FDK-Lite. FDK-Lite is the same i
 
 If you do not need the above functionalities, then it would be advisable to just run with FDK-Lite for the sake of convenience. 
 
+<br>
 
 ### Sample Code
 
@@ -37,7 +38,9 @@ img_cv = utils.pil_to_cv2(img)
 output = det.predict(img_cv)
 out_img = det.visualize(img_cv,output,figsize=(18,18))
 ```
+![](/misc/readme/detectron1.jpg)
 
+<br>
 
 Super-Resolution with *ESRGAN*
 ```
@@ -60,7 +63,9 @@ img_cv = utils.pil_to_cv2(img)
 output = super_res.predict(img_cv)
 super_res.visualize(img_cv,output,figsize=(20,20))
 ```
+![](/misc/readme/superres1.jpg)
 
+<br>
 
 Machine Translation with *MarianMT/Helsinki-NLP*
 ```
@@ -83,7 +88,9 @@ img_cv = utils.pil_to_cv2(img)
 output = Trans.predict(text_to_translate)
 Trans.visualize(text_to_translate,output)
 ```
+![](/misc/readme/translate1.jpg)
 
+<br>
 
 ### Installation
 FDK has been structured in such a way FDK-Full is simply FDK-Lite with a few extra modules. Hence, if you would like to install only FDK-Full, just follow through the entirety of the instructions below; for FDK-Lite, you can skip the steps on installing detectron2 below.
@@ -112,8 +119,12 @@ pip install -r requirements.txt
 #Upgrading to FDK-Full (with detectron2)
 #Check out instructions at https://github.com/facebookresearch/detectron2
 ```
+<br> 
+
 ## Acknowledgement
 *To be completed* 1stDayKit is built upon the works of many different authors and open-source projects. 1stDayKit serves primarily as a unifying wrapper that curates and simplifies said projects, and therefore relies on these projects very much; the contributions of their respective authors cannot be understated. I will be providing a complete list of references and acknowledgements here in the near future. Cheers!
+
+<br>
 
 ## Development Logs and Notes
 
