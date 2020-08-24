@@ -2,7 +2,7 @@
 ***Stupidly easy to use high-level Deep Learning toolkit for solving generic tasks.***
 
 <p align="center">
-  <img width="600" src="https://github.com/1stDayHack/1stdaykit/blob/master/misc/pic.png" />
+  <img width="800" src="misc/nyc_final_1.gif" />
 </p>
 
 
@@ -83,6 +83,7 @@ img_cv = utils.pil_to_cv2(img)
 output = Trans.predict(text_to_translate)
 Trans.visualize(text_to_translate,output)
 ```
+
 
 ### Installation
 FDK has been structured in such a way FDK-Full is simply FDK-Lite with a few extra modules. Hence, if you would like to install only FDK-Full, just follow through the entirety of the instructions below; for FDK-Lite, you can skip the steps on installing detectron2 below.
