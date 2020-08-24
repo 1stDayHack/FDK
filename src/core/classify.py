@@ -13,12 +13,12 @@ import matplotlib.patches as patches
 
 class Classifier(BaseClass):
 
-    def __init__(self, model, name='ImageNet_Classifier'):
+    def __init__(self, model, name='ImageNet_Classifier', device="cpu"):
         super().__init__(name)
         
         #Init name and metadata
         self.name = name
-        self.device = 'gpu' if torch.cuda.is_available() else 'cpu'
+        self.device = device.lower()
 
         #Create net
         self.predictor = torchvision.models.wide_resnet101_2(pretrained=True)

@@ -17,13 +17,14 @@ from detectron2.data import MetadataCatalog, DatasetCatalog
 
 class Detector(BaseClass):
 
-    def __init__(self, model="COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml", name="detectron2"):
+    def __init__(self, model="COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml", name="detectron2", device="cpu"):
         super().__init__(name)
         
         #Init name and metadata
         self.name = name
-        self.model = model #checkout model_zoo for all configs
-        self.device = 'gpu' if torch.cuda.is_available() else 'cpu'
+        self.model = model  #checkout model_zoo for all configs
+        self.device = device.lower()
+        # self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
         #Init config file
         self.cfg = get_cfg()
@@ -49,7 +50,7 @@ class Detector(BaseClass):
         Output:
             predictions: torch.tensor object
         """
-        outputs = self.predictor(image.to(self.device))
+        outputs = self.predictor(image)
         
         return outputs
         

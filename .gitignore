@@ -138,3 +138,19 @@ src/core/base_libs/ImageCaptioner/weights/WORDMAP_coco_5_cap_per_img_5_min_word_
 *.pth
 
 *.tar
+
+.vscode/
+
+misc/nyc_native_3_2/
+
+misc/nyc_native_3_3/
+
+misc/nyc_native_3_1/
+
+*.mp4
+
+misc/nyc_final_1/
+
+demo_feature_2.ipynb
+
+demo_feature_1.ipynb

@@ -18,12 +18,12 @@ from .base import BaseClass
 
 class Deoldifier(BaseClass):
 
-    def __init__(self, name='Deoldifier-Stable', render_factor=35): 
+    def __init__(self, name='Deoldifier-Stable', render_factor=35, device="cpu"): 
         super().__init__(name)
         
         #Init name and metadata
         self.name = name
-        self.device = DeviceId.GPU0 if torch.cuda.is_available() else DeviceId.CPU
+        self.device = DeviceId.CPU if device.lower() == "cpu" else DeviceId.GPU0
         device_ = _Device()
         device_.set(device=self.device)
 

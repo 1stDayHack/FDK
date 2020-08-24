@@ -11,12 +11,12 @@ from .base import BaseClass
 
 class DepthEst(BaseClass):
 
-    def __init__(self, name='Depth Estimator'):
+    def __init__(self, name='Depth Estimator', device="cpu"):
         super().__init__(name)
         
         #Init name and metadata
         self.name = name
-        self.device = 'gpu' if torch.cuda.is_available() else 'cpu'
+        self.device = device.lower()
 
         #Create net
         self.predictor = torch.hub.load("intel-isl/MiDaS", "MiDaS")

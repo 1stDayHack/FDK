@@ -12,13 +12,14 @@ from .base import BaseClass
 
 class Translator_T5(BaseClass):
 
-    def __init__(self, name='T5 Translator',task='translation_en_to_de'):
+    def __init__(self, name='T5 Translator', task='translation_en_to_de', device="cpu"):
         super().__init__(name)
         
         #Init name and metadata
         self.name = name
         self.task = task
-        self.device = 1 if torch.cuda.is_available() else -1
+        # self.device = 1 if torch.cuda.is_available() else -1
+        self.device = -1 if device.lower() == "cpu" else 1
 
         #Create net
         self.tokenizer = AutoTokenizer.from_pretrained("t5-base")

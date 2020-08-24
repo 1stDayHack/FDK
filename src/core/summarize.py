@@ -11,12 +11,12 @@ from .base import BaseClass
 
 class Summarizer(BaseClass):
 
-    def __init__(self, name='BART Summarizer',max_length=130,min_length=30):
+    def __init__(self, name='BART Summarizer',max_length=130,min_length=30, device="cpu"):
         super().__init__(name)
         
         #Init name and metadata
         self.name = name
-        self.device = 1 if torch.cuda.is_available() else -1
+        self.device = 1 if device.lower() == "cpu" else -1
         self.max_length = max_length
         self.min_length = min_length
 

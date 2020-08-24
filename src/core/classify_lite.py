@@ -1,7 +1,7 @@
 ### Import modules
 from base import BaseClass
 from utils import utils
-from utils.variables import imagenet_map,imagenet_stats
+from utils.variables import imagenet_map, imagenet_stats
 
 import torchvision.transforms as transforms
 import numpy as np
@@ -13,12 +13,13 @@ import matplotlib.patches as patches
 
 class Classifier(BaseClass):
 
-    def __init__(self, model, name='ImageNet_Classifier'):
+    def __init__(self, model, name='ImageNet_Classifier', device='cpu'):
         super().__init__(name)
-        
+
         #Init name and metadata
         self.name = name
-        self.device = 'gpu' if torch.cuda.is_available() else 'cpu'
+        self.device = device.lower()
+        # self.device = 'gpu' if torch.cuda.is_available() else 'cpu'
 
         #Create net
         self.predictor = torchvision.models.mobilenet_v2(pretrained=True)

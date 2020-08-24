@@ -11,12 +11,12 @@ from .base import BaseClass
 
 class QuesAns(BaseClass):
 
-    def __init__(self, name='BERT QuesAns'):
+    def __init__(self, name='BERT QuesAns', device="cpu"):
         super().__init__(name)
         
         #Init name and metadata
         self.name = name
-        self.device = 1 if torch.cuda.is_available() else -1
+        self.device = 1 if device.lower() == "cpu" else -1
 
         #Create net. Commented out; seems like default works, other models/tokenizer will have errors.
         # self.tokenizer = AutoTokenizer.from_pretrained("bert-large-uncased-whole-word-masking-finetuned-squad")

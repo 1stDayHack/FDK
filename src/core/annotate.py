@@ -21,12 +21,13 @@ from .base import BaseClass
 
 class ImageAnnotater(BaseClass):
 
-    def __init__(self, name='Show_Attend_Tell Image Annotation', beam_size=5):
+    def __init__(self, name='Show_Attend_Tell Image Annotation', beam_size=5, device="cpu"):
         super().__init__(name)
         
         #Init name and metadata
         self.name = name
-        self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
+        self.device = device.lower()
+        # self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
         self.beam_size = beam_size
 
         #Suppress annoying printouts | Dangerous :p

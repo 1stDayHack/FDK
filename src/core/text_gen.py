@@ -11,12 +11,12 @@ from .base import BaseClass
 
 class _TextGen(BaseClass):
 
-    def __init__(self, name='GPT-2 TextGen Base Class'):
+    def __init__(self, name='GPT-2 TextGen Base Class', device="cpu"):
         super().__init__(name)
         
         #Init name and metadata
         self.name = name
-        self.device = 1 if torch.cuda.is_available() else -1
+        self.device = 1 if device.lower() == "cpu" else -1
 
 
 

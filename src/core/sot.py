@@ -14,12 +14,13 @@ import matplotlib.patches as patches
 
 class ObjectTracker(BaseClass):
 
-    def __init__(self, model, name='DaSiamRPN'):
+    def __init__(self, model, name='BlazeFace', device="cpu"):
         super().__init__(name)
         
         #Init name and metadata
         self.name = name
-        self.device = 'gpu' if torch.cuda.is_available() else 'cpu'
+        # self.device = 'gpu' if torch.cuda.is_available() else 'cpu'
+        self. device = device.lower()
         self.weight_path = 'blazeface.pth' #replace me
 
         #Create net

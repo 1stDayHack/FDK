@@ -8,9 +8,10 @@ class BaseClass(object):
     Inherit from me and follow my structure!
     """
 
-    def __init__(self,name):
+    def __init__(self,name,device='cpu'):
         
         self.name = name
+        self.device = device
         
 
     def predict(self):

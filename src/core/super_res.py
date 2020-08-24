@@ -1,5 +1,5 @@
 ### Import modules
-import cv2,PIL
+import cv2,PIL,os
 import numpy as np
 import torch
 import matplotlib.pyplot as plt
@@ -12,15 +12,19 @@ from .base import BaseClass
 
 class SuperReser(BaseClass):
 
-    def __init__(self, name='Super Resolution ESRGAN'):
+    def __init__(self, name='Super Resolution ESRGAN', device="cpu"):
         super().__init__(name)
         
         #Init name and metadata
         self.name = name
-        self.device = 'gpu' if torch.cuda.is_available() else 'cpu'
+        self.device = device.lower()
+        # self.device = 'gpu' if torch.cuda.is_available() else 'cpu'
+
+        #Set weights and check
+        self.weight = 'src/core/base_libs/ESRGAN/models/RRDB_ESRGAN_x4.pth' 
+        if not os.path.isfile(self.weight): raise Exception("Model weight not found! Please download it at https://drive.google.com/file/d/1lq5UcxRWnZ5XUQzYD2lW2vFYBBFHdLff/view?usp=sharing")
 
         #Create net
-        self.weight = 'src/core/base_libs/ESRGAN/models/RRDB_ESRGAN_x4.pth' 
         self.predictor = arch.RRDBNet(3, 3, 64, 23, gc=32)
         self.predictor.load_state_dict(torch.load(self.weight), strict=True)
         self.predictor.to(self.device).eval()
