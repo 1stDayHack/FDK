@@ -63,7 +63,7 @@ img_cv = utils.pil_to_cv2(img)
 output = super_res.predict(img_cv)
 super_res.visualize(img_cv,output,figsize=(20,20))
 ```
-![](/misc/readme/superres1.jpg)
+![](/misc/readme/superres1jpg.jpg)
 
 <br>
 
@@ -88,7 +88,7 @@ img_cv = utils.pil_to_cv2(img)
 output = Trans.predict(text_to_translate)
 Trans.visualize(text_to_translate,output)
 ```
-![](/misc/readme/translate1.jpg)
+![](/misc/readme/translate1.png)
 
 <br>
 
