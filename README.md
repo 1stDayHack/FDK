@@ -113,7 +113,7 @@ This option is for those that do not wish to install Anaconda on their machine. 
 *Warning! Please be sure if you are doing this without any virtualenv like setup (e.g. Conda)!* 
 ```
 #Installing FDK-Lite
-git clone https://github.com/1stDayHack/1stdaykit.git
+git clone https://github.com/1stDayHack/FDK.git
 pip install -r requirements.txt
 
 #Upgrading to FDK-Full (with detectron2)
