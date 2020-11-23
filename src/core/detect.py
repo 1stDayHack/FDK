@@ -37,6 +37,7 @@ class Detector(BaseClass):
         # Find a model from detectron2's model zoo. You can use the https://dl.fbaipublicfiles... url as well
         self.cfg.MODEL.WEIGHTS = model_zoo.get_checkpoint_url(self.model) #Weight fetching handled by detectron2's utility fx
         self.predictor = DefaultPredictor(self.cfg)
+        self.dataset_metadata = MetadataCatalog.get(self.cfg.DATASETS.TRAIN[0])
 
 
 
@@ -67,10 +68,9 @@ class Detector(BaseClass):
         Output:
             None
         """
-        viz = Visualizer(image[:, :, ::-1], MetadataCatalog.get(self.cfg.DATASETS.TRAIN[0]), scale=1.2)
+        viz = Visualizer(image[:, :, ::-1], self.dataset_metadata, scale=1.2)
         out = viz.draw_instance_predictions(outputs["instances"].to("cpu"))
-        #plt.imshow(out.get_image())
-        #plt.show()
+
 
         if not noplot:
             fig = plt.figure(figsize = figsize)
