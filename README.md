@@ -99,7 +99,7 @@ FDK has been structured in such a way FDK-Full is simply FDK-Lite with a few ext
 #### Easy Installation (Recommended; <a href = 'https://docs.anaconda.com/anaconda/install/'> Anaconda </a> Required)
 ```
 #Installing FDK-Lite
-git clone https://github.com/1stDayHack/1stdaykit.git
+git clone https://github.com/1stDayHack/FDK.git
 conda env create -f environment.yaml 
 conda activate fdk
 
