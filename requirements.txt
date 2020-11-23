@@ -7,3 +7,4 @@ torch==1.7.0
 torchvision==0.8.1
 transformers==3.0.2
 Pillow==7.1.2
+pyyaml>=5.1
