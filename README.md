@@ -122,37 +122,134 @@ pip install -r requirements.txt
 <br> 
 
 ## Acknowledgement
-*To be completed* 1stDayKit is built upon the works of many different authors and open-source projects. 1stDayKit serves primarily as a unifying wrapper that curates and simplifies said projects, and therefore relies on these projects very much; the contributions of their respective authors cannot be understated. I will be providing a complete list of references and acknowledgements here in the near future. Cheers!
+1stDayKit (FDK) is built upon the works of many different authors and open-source projects. 1stDayKit serves primarily as a unifying wrapper that curates and simplifies said projects, and therefore relies on these projects very much; the contributions of their respective authors cannot be understated. They are as follow:
 
+**Detectron2**
+```
+@misc{wu2019detectron2,
+author =       {Yuxin Wu and Alexander Kirillov and Francisco Massa and
+                Wan-Yen Lo and Ross Girshick},
+title =        {Detectron2},
+howpublished = {\url{https://github.com/facebookresearch/detectron2}},
+year =         {2019}
+}
+```
+
+**BlazeFace**
+```
+@misc{bazarevsky2019blazeface,
+      title={BlazeFace: Sub-millisecond Neural Face Detection on Mobile GPUs}, 
+      author={Valentin Bazarevsky and Yury Kartynnik and Andrey Vakunov and Karthik Raveendran and Matthias Grundmann},
+      year={2019},
+      eprint={1907.05047},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
+
+**Torchvision Classifer Models - Wide ResNet & MobileNetv2**
+```
+@incollection{NEURIPS2019_9015,
+title = {PyTorch: An Imperative Style, High-Performance Deep Learning Library},
+author = {Paszke, Adam and Gross, Sam and Massa, Francisco and Lerer, Adam and Bradbury, James and Chanan, Gregory and Killeen, Trevor and Lin, Zeming and Gimelshein, Natalia and Antiga, Luca and Desmaison, Alban and Kopf, Andreas and Yang, Edward and DeVito, Zachary and Raison, Martin and Tejani, Alykhan and Chilamkurthy, Sasank and Steiner, Benoit and Fang, Lu and Bai, Junjie and Chintala, Soumith},
+booktitle = {Advances in Neural Information Processing Systems 32},
+editor = {H. Wallach and H. Larochelle and A. Beygelzimer and F. d\textquotesingle Alch\'{e}-Buc and E. Fox and R. Garnett},
+pages = {8024--8035},
+year = {2019},
+publisher = {Curran Associates, Inc.},
+url = {http://papers.neurips.cc/paper/9015-pytorch-an-imperative-style-high-performance-deep-learning-library.pdf}
+}
+
+@misc{zagoruyko2017wide,
+      title={Wide Residual Networks}, 
+      author={Sergey Zagoruyko and Nikos Komodakis},
+      year={2017},
+      eprint={1605.07146},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+
+@misc{sandler2019mobilenetv2,
+      title={MobileNetV2: Inverted Residuals and Linear Bottlenecks}, 
+      author={Mark Sandler and Andrew Howard and Menglong Zhu and Andrey Zhmoginov and Liang-Chieh Chen},
+      year={2019},
+      eprint={1801.04381},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
+
+**DaSiamRPN**
+```
+@InProceedings{Yan_2020_CVPR,
+author = {Yan, Bin and Wang, Dong and Lu, Huchuan and Yang, Xiaoyun},
+title = {Cooling-Shrinking Attack: Blinding the Tracker With Imperceptible Noises},
+booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+month = {June},
+year = {2020}
+}
+```
+
+**MiDaS**
+```
+@article{Ranftl2020,
+	author    = {Ren\'{e} Ranftl and Katrin Lasinger and David Hafner and Konrad Schindler and Vladlen Koltun},
+	title     = {Towards Robust Monocular Depth Estimation: Mixing Datasets for Zero-shot Cross-dataset Transfer},
+	journal   = {IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)},
+	year      = {2020},
+}
+```
+
+**ESRGAN**
+```
+@misc{wang2018esrgan,
+      title={ESRGAN: Enhanced Super-Resolution Generative Adversarial Networks}, 
+      author={Xintao Wang and Ke Yu and Shixiang Wu and Jinjin Gu and Yihao Liu and Chao Dong and Chen Change Loy and Yu Qiao and Xiaoou Tang},
+      year={2018},
+      eprint={1809.00219},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
+
+**HugginFace Transformers**
+```
+@inproceedings{wolf-etal-2020-transformers,
+    title = "Transformers: State-of-the-Art Natural Language Processing",
+    author = "Thomas Wolf and Lysandre Debut and Victor Sanh and Julien Chaumond and Clement Delangue and Anthony Moi and Pierric Cistac and Tim Rault and Rémi Louf and Morgan Funtowicz and Joe Davison and Sam Shleifer and Patrick von Platen and Clara Ma and Yacine Jernite and Julien Plu and Canwen Xu and Teven Le Scao and Sylvain Gugger and Mariama Drame and Quentin Lhoest and Alexander M. Rush",
+    booktitle = "Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing: System Demonstrations",
+    month = oct,
+    year = "2020",
+    address = "Online",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/2020.emnlp-demos.6",
+    pages = "38--45"
+}
+```
+
+**Show-Attend-Tell Caption Generator**
+```
+@misc{xu2016show,
+      title={Show, Attend and Tell: Neural Image Caption Generation with Visual Attention}, 
+      author={Kelvin Xu and Jimmy Ba and Ryan Kiros and Kyunghyun Cho and Aaron Courville and Ruslan Salakhutdinov and Richard Zemel and Yoshua Bengio},
+      year={2016},
+      eprint={1502.03044},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
+```
+
+*Note: If I missed out any relevant parties, please do send me a quick ping at my email address or help by amending through a PR. Much thanks!
 <br>
 
 ## Development Logs and Notes
 
 **To Do**:
-* Add path-specification as init-argument.
-* List authors and credits for original repos.
-* Write docstrings.
-* Complete readme.txt
-* Run tests, demonstrations and benchmarks.
-* For Pytorch-Transformer models, give options to change model type (Light or Heavy) and list in docstring. (Simplicity first)
-* For Pytorch-Transfomer Translation model, include options for option language pairs.
-* Need separate installation instructions for detectron2; FDK-Full, no need for FDK-Lite.
-* Installation support and testing on Ubuntu 18.04.
-* Installation support and testing on Windows 10.
-
-
-**Modules/Libs to Add**:
-- [X] Detectron2
-- [X] BlazeFace
-- [X] DasiamRPN
-- [X] Gen. Object Classifier
-- [X] Gen. Object Classifier Lite
-- [X] Super-Resolutor
-- [X] MiDAS
-- [X] PyTrans - Text Summarization 
-- [X] PyTrans - Text Translation
-- [X] PyTrans - Text Q&A
-- [X] PyTrans - Text Generation Lite, Normal, Large, XL
-- [X] PyTrans - Text Sentiment Analysis
-- [X] Image Caption Generator
-- [X] Deoldifier (Shelved)
+- [ ] Complete readme.txt
+- [ ] Write docstrings.
+- [ ] For Pytorch-Transfomer Translation model, include options for option language pairs.
+- [x] List authors and credits for original repos.
+- [x] Run tests, demonstrations and benchmarks.
+- [x] For Pytorch-Transformer models, give options to change model type (Light or Heavy) and list in docstring. (Simplicity first)
+- [x] Need separate installation instructions for detectron2; FDK-Full, no need for FDK-Lite.
+- [x] Installation support and testing on Ubuntu 18.04.
