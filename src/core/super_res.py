@@ -33,7 +33,7 @@ class SuperReser(BaseClass):
 
     def predict(self,image):
         """
-        Does classification on a single image. In order to perform batch classification,
+        Does super-resolution upscaling on a single image. In order to perform batch inference,
         you can either call this predict() function in a for-loop or alternatively (advanced)
         try to modify this predict() function to perform batch-inferencing.
 
@@ -70,6 +70,7 @@ class SuperReser(BaseClass):
         Input:
             image: cv2 type object
             outputs: torch.tensor object returned by the predict() function
+            figsize: tuple; final visualization figure plot size
 
         Output:
             None

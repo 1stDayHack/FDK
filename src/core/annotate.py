@@ -59,7 +59,7 @@ class ImageAnnotater(BaseClass):
 
     def predict(self,image):
         """
-        Does depth estimation on a single image. In order to perform batch classification,
+        Does image annotation on a single image. In order to perform batch inference,
         you can either call this predict() function in a for-loop or alternatively (advanced)
         try to modify this predict() function to perform batch-inferencing.
 
@@ -93,7 +93,7 @@ class ImageAnnotater(BaseClass):
 
         Input:
             image: PIL object.
-            tuple: tuple of (seq,alphas) from predict() function.
+            output: tuple of (seq,alphas) from predict() function.
 
         Output:
             None

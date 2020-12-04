@@ -37,8 +37,10 @@ class FaceTracker(BaseClass):
 
     def predict(self,image):
         """
-        Does inference with all supported mode of inference by Detectron2.
-
+        Performs face detection and facial keypoint detection.
+        Unfortunately only works for low resolution input for now which is not idea.
+        Recommended to be used for close ups only.
+ 
         Input:
             image: cv2 type object
 
@@ -59,6 +61,7 @@ class FaceTracker(BaseClass):
         Input:
             image: cv2 type object
             outputs: torch.tensor object returned by the predict() function
+            with_keypoints: boolean; if True, will return visualization with keypoints drawn on
 
         Output:
             None

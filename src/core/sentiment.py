@@ -30,12 +30,12 @@ class SentimentAnalyzer(BaseClass):
 
     def predict(self,text):
         """
-        Does depth estimation on a single image. In order to perform batch classification,
+        Does sentiment analysis on a given text. In order to perform batch classification,
         you can either call this predict() function in a for-loop or alternatively (advanced)
         try to modify this predict() function to perform batch-inferencing.
 
         Input:
-            image: str object. Seed text to be used for generation.
+            text: str object. Seed text to be used for generation.
 
         Output:
             predictions: list object. Generated text.
@@ -55,7 +55,8 @@ class SentimentAnalyzer(BaseClass):
         Simple function to call pretty-print for a neater text representation.
 
         Input:
-            img: str object
+            raw: str object; default text
+            output: str object; obj returned by predict()
 
         Output:
             None
