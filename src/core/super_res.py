@@ -22,7 +22,8 @@ class SuperReser(BaseClass):
 
         #Set weights and check
         self.weight = 'src/core/base_libs/ESRGAN/models/RRDB_ESRGAN_x4.pth' 
-        if not os.path.isfile(self.weight): raise Exception("Model weight not found! Please download it at https://drive.google.com/file/d/1lq5UcxRWnZ5XUQzYD2lW2vFYBBFHdLff/view?usp=sharing")
+        if not os.path.isfile(self.weight): 
+            raise Exception("Model weight not found! Please download it at https://drive.google.com/file/d/1lq5UcxRWnZ5XUQzYD2lW2vFYBBFHdLff/view?usp=sharing")
 
         #Create net
         self.predictor = arch.RRDBNet(3, 3, 64, 23, gc=32)
