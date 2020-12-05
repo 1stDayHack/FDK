@@ -15,6 +15,10 @@ class FaceTracker(BaseClass):
     def __init__(self, name='BlazeFace', device="cpu"):
         super().__init__(name)
         
+        #Check for weight files first
+        if not os.path.isfile("src/core/base_libs/BlazeFace/blazeface.pth"):
+            raise Exception("Warning! Missing weight file for model. Download it at https://drive.google.com/drive/folders/1HzUseRlhoYluTOEnS3oRpoFJ_gxXeubV?usp=sharing")
+
         #Init name and metadata
         self.name = name
         # self.device = 'gpu' if torch.cuda.is_available() else 'cpu'
