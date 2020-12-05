@@ -47,7 +47,7 @@ class FaceTracker(BaseClass):
         Output:
             predictions: torch.tensor object
         """
-        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB).to(self.device) #Cast as right format
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB) #Cast as right format
         outputs = self.predictor.predict_on_image(image)
         
         return outputs
