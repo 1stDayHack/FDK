@@ -81,8 +81,6 @@ Trans = Translator_M(task='Helsinki-NLP/opus-mt-en-ROMANCE')
 text_to_translate = ['>>fr<< this is a sentence in english that we want to translate to french',
                      '>>pt<< This should go to portuguese',
                      '>>es<< And this to Spanish']
-#Convert to cv2
-img_cv = utils.pil_to_cv2(img)
 
 #Infer and visualize
 output = Trans.predict(text_to_translate)
