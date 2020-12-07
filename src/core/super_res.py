@@ -21,7 +21,10 @@ class SuperReser(BaseClass):
         # self.device = 'gpu' if torch.cuda.is_available() else 'cpu'
 
         #Set weights and check
-        self.weight = 'src/core/base_libs/ESRGAN/models/RRDB_ESRGAN_x4.pth' 
+        self.weight_1 = 'src/core/base_libs/ESRGAN/models/RRDB_ESRGAN_x4.pth' 
+        self.weight_2 = 'FDK/src/core/base_libs/ESRGAN/models/RRDB_ESRGAN_x4.pth' 
+        self.weight = self.weight_1 if os.path.isfile(self.weight_1) else self.weight_2
+
         if not os.path.isfile(self.weight): 
             raise Exception("Model weight not found! Please download it at https://drive.google.com/file/d/1lq5UcxRWnZ5XUQzYD2lW2vFYBBFHdLff/view?usp=sharing")
 
