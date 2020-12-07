@@ -19,7 +19,9 @@ class FaceTracker(BaseClass):
         self.weight1 = "src/core/base_libs/BlazeFace/blazeface.pth"
         self.weight2 = "FDK/src/core/base_libs/BlazeFace/blazeface.pth"
         self.weight = self.weight1 if os.path.isfile(self.weight1) else self.weight2
-        self.anchor = '/'.join([self.weight.split("/")[:-1],"anchors.npy"])
+        self.anchor = self.weight.split("/")[:-1]
+        self.anchor.append("anchors.npy")
+        self.anchor = '/'.join(self.anchor)
         
         if not os.path.isfile(self.weight):
             raise Exception("Warning! Missing weight file for model. Download it at https://drive.google.com/drive/folders/1HzUseRlhoYluTOEnS3oRpoFJ_gxXeubV?usp=sharing")
