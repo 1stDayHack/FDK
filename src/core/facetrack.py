@@ -16,20 +16,23 @@ class FaceTracker(BaseClass):
         super().__init__(name)
         
         #Check for weight files first
-        if (not os.path.isfile("src/core/base_libs/BlazeFace/blazeface.pth")) and (not os.path.isfile("FDK/src/core/base_libs/BlazeFace/blazeface.pth")):
+        self.weight1 = "src/core/base_libs/BlazeFace/blazeface.pth"
+        self.weight2 = "FDK/src/core/base_libs/BlazeFace/blazeface.pth"
+        self.weight = self.weight1 if os.path.isfile(self.weight1) else self.weight2
+        self.anchor = '/'.join([self.weight.split("/")[:-1],"anchors.npy"])
+        
+        if not os.path.isfile(self.weight):
             raise Exception("Warning! Missing weight file for model. Download it at https://drive.google.com/drive/folders/1HzUseRlhoYluTOEnS3oRpoFJ_gxXeubV?usp=sharing")
 
         #Init name and metadata
         self.name = name
         # self.device = 'gpu' if torch.cuda.is_available() else 'cpu'
         self.device = device.lower()
-        self.weight_path = 'src/core/base_libs/BlazeFace/blazeface.pth' #replace me
-        self.anchor_path = 'src/core/base_libs/BlazeFace/anchors.npy' #replace me
 
         #Create net
         self.predictor = BlazeFace().to(self.device)
-        self.predictor.load_weights(self.weight_path)
-        self.predictor.load_anchors(self.anchor_path)
+        self.predictor.load_weights(self.weight)
+        self.predictor.load_anchors(self.anchor)
 
         #Optionally change the thresholds:
         self.predictor.min_score_thresh = 0.75
