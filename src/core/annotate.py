@@ -24,6 +24,8 @@ class ImageAnnotater(BaseClass):
     def __init__(self, name='Show_Attend_Tell Image Annotation', beam_size=5, device="cpu"):
         super().__init__(name)
         
+	print("Warning! Module broken due to PyTorch 1.7 upgrades. Depracated for now.")
+
         #Init name and metadata
         self.name = name
         self.device = device.lower()
