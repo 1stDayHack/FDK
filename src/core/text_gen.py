@@ -11,12 +11,11 @@ from .base import BaseClass
 
 class _TextGen(BaseClass):
 
-    def __init__(self, name='GPT-2 TextGen Base Class', device="cpu"):
+    def __init__(self, name='GPT-2 TextGen Base Class'):
         super().__init__(name)
         
         #Init name and metadata
         self.name = name
-        self.device = 1 if device.lower() == "cpu" else -1
 
 
 
@@ -62,7 +61,7 @@ class _TextGen(BaseClass):
 
 class TextGen_Base(_TextGen):
 
-    def __init__(self, name='GPT-2 TextGen',max_length=12,num_return_sequences=3):
+    def __init__(self,name,max_length=12,num_return_sequences=3):
         super().__init__(name)
         
         #Init name and metadata
@@ -75,20 +74,18 @@ class TextGen_Base(_TextGen):
         self.model = AutoModelWithLMHead.from_pretrained("gpt2")
         self.predictor = pipeline('text-generation', 
                                   model = self.model,
-                                  tokenizer = self.tokenizer,
-                                  device = self.device)
+                                  tokenizer = self.tokenizer)
 
 
 
 class TextGen_Large(_TextGen):
 
-    def __init__(self, name='GPT-2 Large TextGen',max_length=12,num_return_sequences=3):
+    def __init__(self, name,max_length=12,num_return_sequences=3):
         super().__init__(name)
         
         #Init name and metadata
         self.name = name
         self.max_length = max_length
-        self.device = 1 if torch.cuda.is_available() else -1
         self.num_return_sequences=num_return_sequences
 
 
@@ -97,15 +94,14 @@ class TextGen_Large(_TextGen):
         self.model = AutoModelWithLMHead.from_pretrained("gpt2-large")
         self.predictor = pipeline('text-generation', 
                                   model = self.model,
-                                  tokenizer = self.tokenizer,
-                                  device = self.device)
+                                  tokenizer = self.tokenizer)
 
 
 
 
 class TextGen_XL(_TextGen):
 
-    def __init__(self, name='GPT-2 XL TextGen',max_length=12,num_return_sequences=3):
+    def __init__(self, name,max_length=12,num_return_sequences=3):
         super().__init__(name)
         
         #Init name and metadata
@@ -119,14 +115,13 @@ class TextGen_XL(_TextGen):
         self.model = AutoModelWithLMHead.from_pretrained("gpt2-XL")
         self.predictor = pipeline('text-generation', 
                                   model = self.model,
-                                  tokenizer = self.tokenizer,
-                                  device = self.device)
+                                  tokenizer = self.tokenizer)
 
 
 
 class TextGen_Lite(_TextGen):
 
-    def __init__(self, name='GPT-2 Lite TextGen',max_length=12,num_return_sequences=3):
+    def __init__(self, name,max_length=12,num_return_sequences=3):
         super().__init__(name)
         
         #Init name and metadata
@@ -139,5 +134,4 @@ class TextGen_Lite(_TextGen):
         self.model = AutoModelWithLMHead.from_pretrained("distilgpt2")
         self.predictor = pipeline('text-generation', 
                                   model = self.model,
-                                  tokenizer = self.tokenizer,
-                                  device = self.device)
+                                  tokenizer = self.tokenizer)

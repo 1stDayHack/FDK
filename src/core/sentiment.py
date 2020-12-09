@@ -11,20 +11,16 @@ from .base import BaseClass
 
 class SentimentAnalyzer(BaseClass):
 
-    def __init__(self, name='Sentiment Analyzer', device="cpu"): #alt: distilbert-base-uncased-finetuned-sst-2-english 
+    def __init__(self, name='Sentiment Analyzer'): #alt: distilbert-base-uncased-finetuned-sst-2-english 
         super().__init__(name)
         
         #Init name and metadata
         self.name = name
-        self.device = 1 if device.lower() == "cpu" else -1
 
         #Create net
         # self.tokenizer = AutoTokenizer.from_pretrained("gpt2")
         # self.model = AutoModelWithLMHead.from_pretrained("gpt2")
-        self.predictor = pipeline('sentiment-analysis', 
-                                #   model = self.model,
-                                #   tokenizer = self.tokenizer,
-                                  device = self.device)
+        self.predictor = pipeline('sentiment-analysis')
 
 
 

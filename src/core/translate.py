@@ -25,11 +25,10 @@ class Translator_M(BaseClass):
         #Init name and metadata
         self.name = name
         self.task = task
-        self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
         #Create net
         self.tokenizer = MarianTokenizer.from_pretrained(self.task)
-        self.predictor = MarianMTModel.from_pretrained(self.task).to(self.device)
+        self.predictor = MarianMTModel.from_pretrained(self.task)
 
 
 
@@ -86,22 +85,20 @@ class Translator_T5(BaseClass):
     Find language-pair models at: https://huggingface.co/ 
     """
 
-    def __init__(self, name='T5 Translator', task='translation_en_to_de', device="cpu"):
+    def __init__(self, name='T5 Translator', task='translation_en_to_de'):
         super().__init__(name)
         
         #Init name and metadata
         self.name = name
         self.task = task
-        # self.device = 1 if torch.cuda.is_available() else -1
-        self.device = -1 if device.lower() == "cpu" else 1
+
 
         #Create net
         self.tokenizer = AutoTokenizer.from_pretrained("t5-base")
         self.model = AutoModelWithLMHead.from_pretrained("t5-base")
         self.predictor = pipeline(self.task, 
                                   model = self.model,
-                                  tokenizer = self.tokenizer,
-                                  device = self.device)
+                                  tokenizer = self.tokenizer)
 
 
 
