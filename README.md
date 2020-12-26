@@ -98,7 +98,7 @@ FDK has been structured in such a way FDK-Full is simply FDK-Lite with a few ext
 ```
 #Installing FDK-Lite
 git clone https://github.com/1stDayHack/FDK.git
-conda env create -f environment.yaml 
+conda env create -f environment.yml 
 conda activate fdk
 
 #Upgrading to FDK-Full (with detectron2)
