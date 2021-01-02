@@ -3,6 +3,9 @@
 
 <p align="center">
   <img width="800" src="misc/readme/nyc_final_1.gif" />
+  <p>Raw footage from ActionKid's Video, <a href = "https://www.youtube.com/watch?v=u28EnyGxPCg&t=12s&ab_channel=ActionKid"><i>"4k Walking NYC (Narrated) : Fifth Avenue from 60th Street to 23rd Street (Flatiron Building)"</i>.</a>
+  </p>
+
 </p>
 
 
